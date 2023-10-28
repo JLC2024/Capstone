@@ -1,0 +1,14 @@
+<div>
+    <h2>Welcome to Your Admin Homepage</h2>
+    
+    <input type="button" value="logout"
+    (click)="logout()" class="btn btn-info"/>
+<br>
+    <a routerLink="addMedicine" style="color:white">Add Medications</a><br>
+    <a routerLink="updateMedicine" style="color:white">Edit Medication</a>
+    
+    <hr/>
+    <router-outlet></router-outlet>
+
+</div>
+

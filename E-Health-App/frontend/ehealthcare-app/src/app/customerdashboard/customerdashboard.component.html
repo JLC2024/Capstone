@@ -1,0 +1,10 @@
+<div>
+    <h2>Welcome to Your Customer Homepage {{emailid}}</h2>
+
+    <input type="button" value="logout"
+    (click)="logout()" class="btn btn-info"/>
+
+    <a routerLink="viewMedicine">View Medications</a>
+    <hr/>
+    <router-outlet></router-outlet>
+</div>
