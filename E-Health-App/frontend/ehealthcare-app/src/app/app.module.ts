@@ -13,6 +13,7 @@ import { AddmedicineComponent } from './addmedicine/addmedicine.component';
 import { ViewmedicineComponent } from './viewmedicine/viewmedicine.component';
 import { UpdatemedicineComponent } from './updatemedicine/updatemedicine.component';
 import { DeletemedicineComponent } from './deletemedicine/deletemedicine.component';
+import { AddToCartComponent } from './addtocart/addtocart.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { DeletemedicineComponent } from './deletemedicine/deletemedicine.compone
     AddmedicineComponent,
     ViewmedicineComponent,
     UpdatemedicineComponent,
-    DeletemedicineComponent
+    DeletemedicineComponent,
+    AddToCartComponent
   ],
   imports: [
     BrowserModule,

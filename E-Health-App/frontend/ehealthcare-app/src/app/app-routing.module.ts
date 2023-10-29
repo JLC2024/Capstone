@@ -7,6 +7,9 @@ import { SignupComponent } from './signup/signup.component';
 import { AddmedicineComponent } from './addmedicine/addmedicine.component';
 import { ViewmedicineComponent } from './viewmedicine/viewmedicine.component';
 import { UpdatemedicineComponent } from './updatemedicine/updatemedicine.component';
+import { Addtocart } from './addtocart';
+import { AddToCartComponent } from './addtocart/addtocart.component';
+
 
 
 const routes: Routes = [
@@ -20,7 +23,8 @@ const routes: Routes = [
     
   ]},
   {path:"customerhome",component:CustomerdashboardComponent,children:[
-    {path:"viewMedicine",component:ViewmedicineComponent}
+    {path:"viewMedicine",component:ViewmedicineComponent},
+    {path:"add",component:AddToCartComponent}
     
   ]},
   {path:"login",component:LoginComponent}
