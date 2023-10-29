@@ -47,8 +47,5 @@ public class CartController {
 	
 	
 	
-//	@GetMapping("customer/{emailid}")
-//	public ResponseEntity<?> getCustomerCart(@PathVariable String emailid){
-//		
-//	}
+
 }

@@ -24,9 +24,11 @@ const routes: Routes = [
   ]},
   {path:"customerhome",component:CustomerdashboardComponent,children:[
     {path:"viewMedicine",component:ViewmedicineComponent},
-    {path:"add",component:AddToCartComponent}
+    
+    
     
   ]},
+  {path:"cart",component:AddToCartComponent},
   {path:"login",component:LoginComponent}
 ];
 

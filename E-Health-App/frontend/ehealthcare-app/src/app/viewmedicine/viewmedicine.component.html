@@ -1,14 +1,24 @@
 
    <Form>
     <label for="searchKey">Search for Medications</label>
-    <input #searchkeyword (keyup)="searchByKeyword(searchkeyword.value)" name="searchKey" id="searchKey" placeholder="name or description" class="w-50"/>
+    <input #searchkeyword (keyup)="searchByKeyword(searchkeyword.value)" name="searchKey" id="searchKey" placeholder="name or description" class="w-50" />
    </Form>
-   
+   <div>
+    <a routerLink="/cart" style="color:white">View Cart</a>
+  </div>
+  
    <h2>Medication Details</h2>
 <div>
     <span *ngFor="let mm of medicine">
         <img src={{mm.imageurl}} width="200px" height="200px"/>
-        <div>Name :{{mm.mname}}<br> Price :{{"$"+mm.price}} <br> Bottle Quantity :{{mm.qty}} <br> Description :{{mm.description}} <br> <button (click)="addToCart(mm)">Add to Cart</button></div>
+        <div>Name :{{mm.mname}}<br> Price :{{"$"+mm.price}} <br> Bottle Quantity :{{mm.qty}} <br> Description :{{mm.description}} <br>
+            
+            <div>
+                <input type="number" [(ngModel)]="selectedQuantities[mm.mid]" min="1"><br>
+                <button (click)="addToCart(mm)">Add to Cart</button>
+              </div>
+        </div>
+       
     </span>
 </div>
 

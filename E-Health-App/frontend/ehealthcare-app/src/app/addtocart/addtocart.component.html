@@ -1,2 +1,11 @@
-<p>addtocart works!</p>
+
+    <h1>Your Cart</h1>
+    <div *ngFor="let item of cartItems">
+        {{ item.mname }} ({{ item.quantity }})
+        <button (click)="incrementQuantity(item)">+</button>
+        <button (click)="decrementQuantity(item)">-</button>
+        <button (click)="deleteItemFromCart(item)">Delete</button>
+      </div>
+      <a routerLink="/customerhome/viewMedicine" Style="color:white">Back to View Medicine</a>
+  
 

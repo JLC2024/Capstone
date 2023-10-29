@@ -1,5 +1,6 @@
 package ehealthcare.com.service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import ehealthcare.com.entity.Cart;
@@ -16,7 +17,7 @@ public class CartService {
 	public String addCartItem(Login customer, Medicine medrequest, Integer quantity) {
 		Cart cartItem = new Cart(customer, medrequest, quantity);
 		cartRepository.save(cartItem);
-		return "Item added to cart";
+		return "Added";
 		
 	}
 }

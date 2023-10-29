@@ -14,6 +14,6 @@ export class AddtocartService {
   addToCart(emailid: string, mid: number, quantity: number) {
     const data = { emailid, mid, quantity };
 
-    return this.http.post(`${this.baseUrl}/add`, data);
+    return this.http.post(`${this.baseUrl}/add`, data, { responseType: 'text' });
   }
   }
