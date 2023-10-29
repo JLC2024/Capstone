@@ -3,6 +3,8 @@ package ehealthcare.com.entity;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -11,11 +13,12 @@ public class Login {
 
 	@Id	
 	private String emailid;
+	
 	private String password;
 	private String typeofuser;
 	
-	@OneToMany(mappedBy = "customer")
-	private List<Cart> carts;
+
+
 	
 	public Login() {
 		
@@ -44,13 +47,7 @@ public class Login {
 	public void setTypeofuser(String typeofuser) {
 		this.typeofuser = typeofuser;
 	}
-	public List<Cart> getCarts() {
-        return carts;
-    }
 
-    public void setCarts(List<Cart> carts) {
-        this.carts = carts;
-    }
 
     @Override
     public String toString() {

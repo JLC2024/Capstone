@@ -37,14 +37,16 @@ public class LoginService {
 			
 		}
 		
-		public String signUp(Login login) {
+		public String signUp(Login login, String userProvidedEmail) {
 			if(login.getTypeofuser().equalsIgnoreCase("admin")) {
 				return "you can't create admin account";
 			}else {
+				 login.setEmailid(userProvidedEmail);
 				Optional<Login> result = loginRepository.findById(login.getEmailid());
 				if(result.isPresent()) {
 					return "Account already exists";
 			}else {
+				
 				loginRepository.save(login);
 				return "Account created successfully!";
 			}
@@ -56,4 +58,3 @@ public class LoginService {
 		        return loginRepository.findById(emailid);
 		    }
 		}
-

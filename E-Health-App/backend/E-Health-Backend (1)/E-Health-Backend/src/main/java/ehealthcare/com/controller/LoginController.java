@@ -26,7 +26,8 @@ public class LoginController {
 	
 	@PostMapping(value="signUp",consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String signUp(@RequestBody Login login) {
-		return loginService.signUp(login);
+		String userProvidedEmail = login.getEmailid();
+		return loginService.signUp(login, userProvidedEmail);
 	}
 	
 }
