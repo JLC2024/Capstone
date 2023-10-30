@@ -31,7 +31,7 @@ export class AddToCartComponent {
   }
   
   deleteItemFromCart(item: CartItem) {
-    delete this.cartItems[item.mid];
+    delete this.cartItems[item.medrequest.mid];
   }
 
   addToCart() {

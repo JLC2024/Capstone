@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { CartItem } from './viewmedicine/cartitem';
 import { Viewcart } from './viewcart';
 import { LoginService } from './login.service';
+import { map } from 'rxjs/operators';
+
 
 
 @Injectable({
@@ -17,7 +19,16 @@ export class ViewcartService {
   
   
   getCartItems(emailid: string): Observable<CartItem[]> {
-    return this.http.get<CartItem[]>(`${this.baseUrl}/${emailid}`);
+    return this.http.get<CartItem[]>(`${this.baseUrl}/${emailid}`).pipe(
+      map((data: any) => {
+        if (Array.isArray(data)) {
+          return data;
+        } else {
+         
+          return [data];
+        }
+      })
+    );
   }
    updateCartItemQuantity(cartItemId: number, newQuantity: number): Observable<CartItem> {
      return this.http.put<CartItem>(`${this.baseUrl}/${cartItemId}`, { quantity: newQuantity });
