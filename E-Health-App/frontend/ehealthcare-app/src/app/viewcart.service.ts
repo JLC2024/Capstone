@@ -30,8 +30,8 @@ export class ViewcartService {
       })
     );
   }
-   updateCartItemQuantity(cartItemId: number, newQuantity: number): Observable<CartItem> {
-     return this.http.put<CartItem>(`${this.baseUrl}/${cartItemId}`, { quantity: newQuantity });
+   updateCartItemQuantity(quantity: number, newQuantity: number): Observable<CartItem> {
+     return this.http.put<CartItem>(`${this.baseUrl}/${quantity}`, { quantity: newQuantity });
    }
    deleteCartItem(cartItemId: number): Observable<void> {
      return this.http.delete<void>(`${this.baseUrl}/${cartItemId}`);

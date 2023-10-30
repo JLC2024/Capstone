@@ -3,6 +3,10 @@ import { Router } from '@angular/router';
 import { ViewcartService } from '../viewcart.service';
 import { CartItem } from '../viewmedicine/cartitem';
 import { UserService } from './userService';
+import { FormsModule } from '@angular/forms';
+
+
+
 
 @Component({
   selector: 'app-viewcart',
@@ -84,22 +88,44 @@ export class ViewcartComponent {
       console.log('No email provided.');
     }
   }
+   updateQuantity(item: CartItem) {
+    if (item.quantity > 0) {
+     this.viewcartService.updateCartItemQuantity(item.medrequest.mid, item.quantity).subscribe({
+      next: (response) => {
+         console.log('Item quantity updated:', response);
+       },
+       error: (error) => {
+         console.error('Error updating item quantity:', error);
+       }
+     });
+   }
+  }
 
   incrementQuantity(item: CartItem) {
     item.quantity += 1;
+    this.updateQuantity(item);
   }
 
   decrementQuantity(item: CartItem) {
     if (item.quantity > 1) {
       item.quantity -= 1;
+      this.updateQuantity(item);
     }
   }
 
   deleteItemFromCart(item: CartItem) {
-    // You can remove the item from the array by finding its index.
-    const index = this.cartItems.indexOf(item);
-    if (index > -1) {
-      this.cartItems.splice(index, 1);
-    }
-  }
+    this.viewcartService.deleteCartItem(item.medrequest.mid).subscribe({
+      next: () => {
+        // Remove the item from the local cartItems array.
+        const index = this.cartItems.indexOf(item);
+        if (index > -1) {
+          this.cartItems.splice(index, 1);
+        }
+      },
+      error: (error) => {
+        console.error('Error deleting cart item:', error);
+      }
+  });
 }
+}
+

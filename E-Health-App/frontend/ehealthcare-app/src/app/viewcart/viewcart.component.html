@@ -15,6 +15,7 @@
             </div>
         </div>
         <div class="cart-item-actions">
+          <input type="number" [(ngModel)]="item.quantity" (change)="updateQuantity(item)">
             <button (click)="incrementQuantity(item)">+</button>
             <button (click)="decrementQuantity(item)">-</button>
             <button (click)="deleteItemFromCart(item)">Delete</button>
