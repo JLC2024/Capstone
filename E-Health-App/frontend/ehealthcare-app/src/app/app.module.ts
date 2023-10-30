@@ -14,6 +14,7 @@ import { ViewmedicineComponent } from './viewmedicine/viewmedicine.component';
 import { UpdatemedicineComponent } from './updatemedicine/updatemedicine.component';
 import { DeletemedicineComponent } from './deletemedicine/deletemedicine.component';
 import { AddToCartComponent } from './addtocart/addtocart.component';
+import { ViewcartComponent } from './viewcart/viewcart.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AddToCartComponent } from './addtocart/addtocart.component';
     ViewmedicineComponent,
     UpdatemedicineComponent,
     DeletemedicineComponent,
-    AddToCartComponent
+    AddToCartComponent,
+    ViewcartComponent
   ],
   imports: [
     BrowserModule,

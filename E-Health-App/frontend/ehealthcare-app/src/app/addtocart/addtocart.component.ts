@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { AddtocartService } from '../addtocart.service';
 import { CartItem } from '../viewmedicine/cartitem';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-addtocart',
@@ -13,25 +16,22 @@ export class AddToCartComponent {
   mid: number = 0;
   quantity: number = 0;
   msg: string = '';
-  cartItems: CartItem[] = []; // Use the CartItem interface for the cart items
+  cartItems!: any[];
 
   constructor(private addtocartService: AddtocartService, public router:Router) {}
 
   incrementQuantity(item: CartItem) {
-    item.quantity++;
+    item.quantity += 1;
   }
-
+  
   decrementQuantity(item: CartItem) {
     if (item.quantity > 1) {
-      item.quantity--;
+      item.quantity -= 1;
     }
   }
-
+  
   deleteItemFromCart(item: CartItem) {
-    const index = this.cartItems.indexOf(item);
-    if (index !== -1) {
-      this.cartItems.splice(index, 1);
-    }
+    delete this.cartItems[item.mid];
   }
 
   addToCart() {
@@ -46,4 +46,7 @@ export class AddToCartComponent {
       }
     });
   }
-}
+  cartItemsArray(): CartItem[] {
+    return Object.values(this.cartItems);
+  }
+  }

@@ -1,0 +1,27 @@
+<h1>Your Cart</h1>
+
+<div *ngIf="cartItems.length === 0">
+    <p>Your cart is empty.</p>
+  </div>
+  
+  <div *ngIf="cartItems && cartItems.length > 0">
+  <div *ngFor="let item of cartItems" class="cart-item">
+    <div class="cart-item">
+      <div class="cart-item-details">
+        <img [src]="item.imageurl" alt="{{ item.mname }}" />
+        <div>
+          <h2>{{ item.mname }}</h2>
+          <p>Price: ${{ item.price }}</p>
+          <p>Quantity: {{ item.quantity }}</p>
+          <p>Description: {{ item.description }}</p>
+        </div>
+      </div>
+      <div class="cart-item-actions">
+        <button (click)="incrementQuantity(item)">+</button>
+        <button (click)="decrementQuantity(item)">-</button>
+        <button (click)="deleteItemFromCart(item)">Delete</button>
+      </div>
+    </div>
+  </div>
+  
+<a routerLink="/customerhome/viewMedicine" Style="color:white">Back to View Medicine</a>

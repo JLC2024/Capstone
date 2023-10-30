@@ -1,5 +1,4 @@
-export class CartItem {
-
+export class Viewcart {
     public cartid: number;
     public mid: number;
     public mname: string;

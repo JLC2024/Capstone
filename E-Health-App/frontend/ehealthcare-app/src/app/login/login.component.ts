@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {FormGroup,FormControl} from '@angular/forms';
 import { LoginService } from '../login.service';
 import { Router } from '@angular/router';
+import { UserService } from '../viewcart/userService';
 
 @Component({
   selector: 'app-login',
@@ -10,8 +11,10 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   msg:string="";
-    constructor(public loginService:LoginService, 
-      public router:Router){
+    constructor(
+      public loginService:LoginService, 
+      public router:Router, 
+      private userService: UserService){
 
     }
   loginRef = new FormGroup({
@@ -30,6 +33,7 @@ signIn(): void{
         this.router.navigate(["adminhome"]);
       }else if(result=="Customer login successful"){
         sessionStorage.setItem("emailid",loginData.emailid);
+        this.userService.setEmailid(loginData.emailid);
         this.router.navigate(["customerhome"]);
       }else{
         this.msg=result;

@@ -1,5 +1,6 @@
 package ehealthcare.com.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,11 +12,11 @@ import javax.persistence.ManyToOne;
 public class Cart {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Integer cartid;
+	@Column(name="emailid", nullable = false, insertable = true)
+	String emailid;
+	
 	
 	@ManyToOne
-    @JoinColumn(name = "emailid", referencedColumnName = "emailid")
     Login customer;
 	
 	 @ManyToOne
@@ -28,21 +29,29 @@ public class Cart {
 		
 	}
 	
-	public Cart(Login customer, Medicine medrequest, Integer quantity) {
+	public Cart(String emailid, Login customer, Medicine medrequest, Integer quantity) {
 		super();
+		this.emailid=emailid;
 		this.customer=customer;
 		this.medrequest=medrequest;
 		this.quantity=quantity;
 	}
 	
-	 public Integer getCartid() {
-	        return cartid;
-	    }
-
-	    public void setCartid(Integer cartid) {
-	        this.cartid = cartid;
-	    }
-
+	public Cart(Login customer, Medicine medrequest, Integer quantity) {
+		this.customer=customer;
+		this.medrequest=medrequest;
+		this.quantity=quantity;
+	}
+	
+	 
+		public String getEmailid() {
+			return emailid;
+		}
+		
+		public void setEmailid(String emailid) {
+			this.emailid=emailid;
+		}
+		
 	    public Login getCustomer() {
 	        return customer;
 	    }
@@ -69,7 +78,7 @@ public class Cart {
 
 		@Override
 		public String toString() {
-			return "Cart [cartid=" + cartid + ", customer=" + customer + ", medrequest=" + medrequest + ", quantity="
+			return "Cart [emailid=" + emailid + ", customer=" + customer + ", medrequest=" + medrequest + ", quantity="
 					+ quantity + "]";
 		}
 	

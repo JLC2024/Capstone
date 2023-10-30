@@ -8,16 +8,14 @@ import ehealthcare.com.entity.Login;
 import ehealthcare.com.entity.Medicine;
 import ehealthcare.com.repository.CartRepository;
 
-@Service
-public class CartService {
 
-	@Autowired
-	CartRepository cartRepository;
-	
-	public String addCartItem(Login customer, Medicine medrequest, Integer quantity) {
-		Cart cartItem = new Cart(customer, medrequest, quantity);
-		cartRepository.save(cartItem);
-		return "Added";
+public interface CartService{
+
+	public String addCartItem(String emailid, Login customer, Medicine medrequest, Integer quantity);
 		
-	}
+	Cart getCartById(String emailid);
+    
+	Cart updateCart(String emailid, Cart cartDetails);
+	
+	void deleteCart(String emailid);
 }

@@ -9,6 +9,7 @@ import { ViewmedicineComponent } from './viewmedicine/viewmedicine.component';
 import { UpdatemedicineComponent } from './updatemedicine/updatemedicine.component';
 import { Addtocart } from './addtocart';
 import { AddToCartComponent } from './addtocart/addtocart.component';
+import { ViewcartComponent } from './viewcart/viewcart.component';
 
 
 
@@ -28,7 +29,8 @@ const routes: Routes = [
     
     
   ]},
-  {path:"cart",component:AddToCartComponent},
+  
+  {path:"viewcart",component:ViewcartComponent},
   {path:"login",component:LoginComponent}
 ];
 

@@ -4,6 +4,7 @@ import { Medicine } from '../medicine';
 import { AddtocartService } from '../addtocart.service';
 import { LoginService } from '../login.service';
 import { Router } from '@angular/router';
+import { UserService } from '../viewcart/userService';
 
 @Component({
   selector: 'app-viewmedicine',
@@ -20,7 +21,8 @@ export class ViewmedicineComponent implements OnInit {
     public medicineService: MedicineService,
     private addtocartService: AddtocartService,
     private loginService: LoginService,
-    public router: Router
+    public router: Router,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -60,27 +62,26 @@ export class ViewmedicineComponent implements OnInit {
   }
 
   addToCart(medicine: Medicine) {
-    const emailid = sessionStorage.getItem('emailid');
+    const emailid = sessionStorage.getItem('emailid')
+  
     const quantity = this.selectedQuantities[medicine.mid];
 
     if (emailid && quantity) {
       this.addtocartService.addToCart(emailid, medicine.mid, quantity).subscribe({
-        next: (result: any) => {
-          if (result == 'Added') {
+        next: (result: string) => {
+            console.log("adding to: ", emailid)
             alert('Added to Cart!');
-          } else {
-            this.msg = result;
-            alert('Failed to Add Item');
-          }
+       
         },
         error: (error: any) => {
-          console.error('Error adding medicine to cart: ', error);
-          alert('Failed to Add Item');
+          console.error('Error adding medicine to cart:', error);
+          alert('Failed to Add Item: ' + error.message); 
         }
       });
     }
   }
+
   viewCart() {
-    this.router.navigate(['/cart']); // Navigate to the cart component
+    this.router.navigate(['/viewcart']);
   }
 }
