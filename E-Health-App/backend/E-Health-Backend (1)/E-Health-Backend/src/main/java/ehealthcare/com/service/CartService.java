@@ -3,6 +3,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import ehealthcare.com.dto.AddToCartRequest;
 import ehealthcare.com.entity.Cart;
 import ehealthcare.com.entity.Login;
 import ehealthcare.com.entity.Medicine;
@@ -18,4 +19,12 @@ public interface CartService{
 	Cart updateCart(String emailid, Cart cartDetails);
 	
 	void deleteCart(String emailid);
+	
+	
+	
+	void deleteCartItem(String emailid, Integer mid);
+
+	public Cart updateItemQuantity(String emailid, Integer mid, Integer quantity);
+	 
+	 
 }

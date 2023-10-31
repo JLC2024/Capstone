@@ -13,6 +13,7 @@ public class AddToCartRequest {
 		 this.mid=mid;
 		 this.quantity=quantity;
 	 }
+	 
 	public String getEmailid() {
 		return emailid;
 	}

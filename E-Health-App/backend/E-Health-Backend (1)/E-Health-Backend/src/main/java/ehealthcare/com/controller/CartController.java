@@ -22,6 +22,7 @@ import ehealthcare.com.entity.Medicine;
 import ehealthcare.com.service.CartService;
 import ehealthcare.com.service.LoginService;
 import ehealthcare.com.service.MedicineService;
+import ehealthcare.com.exceptions.*;
 
 @RestController
 @RequestMapping("/cart")
@@ -49,13 +50,13 @@ public class CartController {
 		}
 		String result = cartService.addCartItem(emailid,customer, medrequest, quantity);
 
-		if ("Added".equals(result)) {
-	        return ResponseEntity.ok("Added to Cart");
-	    } else {
-	        return ResponseEntity.badRequest().body(result);
-	   
+		if ("Added".equals(result) || "Updated".equals(result)) {
+            return ResponseEntity.ok(result);
+        } else {
+            return ResponseEntity.badRequest().body(result);
+        }
 	    }
-	}
+	
 	
 	
 	@GetMapping("/{emailid}")
@@ -69,6 +70,22 @@ public class CartController {
         Cart updatedCart = cartService.updateCart(emailid, cartDetails);
         return ResponseEntity.ok(updatedCart);
     }
+    
+    @PutMapping("/{emailid}/{mid}")
+    public ResponseEntity<Cart> updateItemQuantity(
+        @PathVariable String emailid,
+        @PathVariable Integer mid,
+        @RequestBody Map<String, Integer> requestBody
+    ) {
+    	Integer quantity = requestBody.get("quantity");
+    	Cart updatedCart = cartService.updateItemQuantity(emailid, mid, quantity);
+        if (updatedCart == null || updatedCart.getQuantity() == null) {
+            throw new BadRequestException("New quantity is required.");
+        }
+
+        Cart updated = cartService.updateItemQuantity(emailid, mid, updatedCart.getQuantity());
+        return ResponseEntity.ok(updated);
+    }
 
     @DeleteMapping("/{emailid}")
     public ResponseEntity<Map<String, Boolean>> deleteCart(@PathVariable String emailid) {
@@ -77,6 +94,14 @@ public class CartController {
         response.put("deleted", Boolean.TRUE);
         return ResponseEntity.ok(response);
     }
+    
+    @DeleteMapping("/{emailid}/{mid}")
+    public ResponseEntity<Void> deleteCartItem(@PathVariable String emailid, @PathVariable Integer mid) {
+        cartService.deleteCartItem(emailid, mid);
+        return ResponseEntity.noContent().build();
+    }
+    
+ 
     
 	}
 

@@ -1,12 +1,19 @@
 package ehealthcare.com.service;
 
 import ehealthcare.com.entity.Medicine;
+
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
+import ehealthcare.com.dto.AddToCartRequest;
 import ehealthcare.com.entity.Cart;
 import ehealthcare.com.entity.Login;
+import ehealthcare.com.exceptions.*;
 
 import ehealthcare.com.repository.CartRepository;
 
@@ -32,7 +39,6 @@ public class CartServiceImpl implements CartService{
 	    public Cart updateCart(String emailid, Cart cartDetails) {
 	        Cart cart = getCartById(emailid);
 
-	        // Update medicine properties
 	        cart.setMedrequest(cartDetails.getMedrequest());
 	        cart.setQuantity(cartDetails.getQuantity());
 	      
@@ -44,6 +50,39 @@ public class CartServiceImpl implements CartService{
 	        Cart cart = getCartById(emailid);
 	        cartRepository.delete(cart);
 	    }
+	 
+	 	@Override
+	    @Transactional
+	    public Cart updateItemQuantity(String emailid, Integer mid, Integer quantity) {
+	 		Cart cart = cartRepository.findByEmailidAndMedrequest_Mid(emailid, mid);
+	        System.out.println("Email ID: " + emailid);
+		    System.out.println("Medicine ID: " + mid);
+		    System.out.println("New Quantity: " + quantity);
+		    
+	     
+	     
+	     if (cart == null) {
+	         throw new CartNotFoundException("Cart item not found");
+	     }
+	     
+	   
+	     cart.setQuantity(quantity);
+
+	        return cartRepository.save(cart);
+	    }
+
+	 
+	 @Override
+	 public void deleteCartItem(String emailid, Integer mid) {
+	     Cart cart = cartRepository.findByEmailidAndMedrequest_Mid(emailid, mid);
+
+	     if (cart != null) {
+	         cartRepository.delete(cart);
+	     } else {
+	         throw new CartNotFoundException("Cart item not found with emailid " + emailid + " and mid " + mid);
+	     }
+	 }
+
 
 	
 	}
