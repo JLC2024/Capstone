@@ -30,12 +30,14 @@ export class ViewcartService {
       })
     );
   }
-   updateCartItemQuantity(quantity: number, newQuantity: number): Observable<CartItem> {
-     return this.http.put<CartItem>(`${this.baseUrl}/${quantity}`, { quantity: newQuantity });
-   }
-   deleteCartItem(cartItemId: number): Observable<void> {
-     return this.http.delete<void>(`${this.baseUrl}/${cartItemId}`);
-   }
+  updateCartItemQuantity(emailid: string, mid: number, newQuantity: number): Observable<CartItem> {
+    const requestBody = { quantity: newQuantity };
+    return this.http.put<CartItem>(`${this.baseUrl}/${emailid}/${mid}`, requestBody);
+  }
+
+   deleteCartItem(emailid: string, mid: number): Observable<void> {
+  return this.http.delete<void>(`${this.baseUrl}/${emailid}/${mid}`);
+}
 }
 
 

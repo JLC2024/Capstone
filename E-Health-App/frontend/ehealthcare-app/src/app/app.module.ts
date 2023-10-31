@@ -16,6 +16,7 @@ import { DeletemedicineComponent } from './deletemedicine/deletemedicine.compone
 import { AddToCartComponent } from './addtocart/addtocart.component';
 import { ViewcartComponent } from './viewcart/viewcart.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

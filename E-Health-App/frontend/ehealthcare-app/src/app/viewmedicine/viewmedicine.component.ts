@@ -5,6 +5,7 @@ import { AddtocartService } from '../addtocart.service';
 import { LoginService } from '../login.service';
 import { Router } from '@angular/router';
 import { UserService } from '../viewcart/userService';
+import { CartItem } from './cartitem';
 
 @Component({
   selector: 'app-viewmedicine',
@@ -13,16 +14,20 @@ import { UserService } from '../viewcart/userService';
 })
 export class ViewmedicineComponent implements OnInit {
   medicine: Array<Medicine> = [];
-  cart: Array<Medicine> = [];
+  // cart2: CartItem[] = [];
+  //cart: Array<Medicine> = [];
+  cart: CartItem[] = [];
   msg: string = '';
   selectedQuantities: { [key: number]: number } = {};
+
 
   constructor(
     public medicineService: MedicineService,
     private addtocartService: AddtocartService,
     private loginService: LoginService,
     public router: Router,
-    private userService: UserService
+    private userService: UserService,
+  
   ) {}
 
   ngOnInit(): void {
@@ -80,6 +85,8 @@ export class ViewmedicineComponent implements OnInit {
       });
     }
   }
+
+
 
   viewCart() {
     this.router.navigate(['/viewcart']);

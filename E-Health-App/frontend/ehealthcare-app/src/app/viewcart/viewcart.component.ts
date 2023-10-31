@@ -88,10 +88,23 @@ export class ViewcartComponent {
       console.log('No email provided.');
     }
   }
+
+    // updateQuantity(item: CartItem) {
+    //  if (item.quantity > 0) {
+    //   this.viewcartService.updateCartItemQuantity(item.medrequest.mid, item.quantity).subscribe({
+    //    next: (response) => {
+    //       console.log('Item quantity updated:', response);
+    //     },
+    //     error: (error) => {
+    //       console.error('Error updating item quantity:', error);
+    //     }
+    //   });
+    // }
+  
    updateQuantity(item: CartItem) {
-    if (item.quantity > 0) {
-     this.viewcartService.updateCartItemQuantity(item.medrequest.mid, item.quantity).subscribe({
-      next: (response) => {
+     if (item.quantity > 0) {
+     this.viewcartService.updateCartItemQuantity(item.emailid, item.medrequest.mid, item.quantity).subscribe({
+       next: (response) => {
          console.log('Item quantity updated:', response);
        },
        error: (error) => {
@@ -99,7 +112,8 @@ export class ViewcartComponent {
        }
      });
    }
-  }
+
+ }
 
   incrementQuantity(item: CartItem) {
     item.quantity += 1;
@@ -114,9 +128,9 @@ export class ViewcartComponent {
   }
 
   deleteItemFromCart(item: CartItem) {
-    this.viewcartService.deleteCartItem(item.medrequest.mid).subscribe({
+    this.viewcartService.deleteCartItem(item.emailid, item.medrequest.mid).subscribe({
       next: () => {
-        // Remove the item from the local cartItems array.
+      
         const index = this.cartItems.indexOf(item);
         if (index > -1) {
           this.cartItems.splice(index, 1);

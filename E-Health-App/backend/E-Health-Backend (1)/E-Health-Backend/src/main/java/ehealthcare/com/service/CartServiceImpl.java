@@ -22,6 +22,7 @@ public class CartServiceImpl implements CartService{
 	@Autowired
 	CartRepository cartRepository;
 	
+	@Transactional
 	@Override
 	public String addCartItem(String emailid, Login customer, Medicine medrequest, Integer quantity) {
 		System.out.println("adding item for: "+emailid);
