@@ -1,5 +1,5 @@
 <h1>Your Cart</h1>
-
+<h3> medication requests may only be submitted for review one at a time.</h3>
 <div *ngIf="cartItems.length === 0">
     <p>Your cart is empty.</p>
 </div>
@@ -24,3 +24,7 @@
 </div>
 
 <a routerLink="/customerhome/viewMedicine" Style="color:white">Back to View Medicine</a>
+<br>
+<br>
+<button [routerLink]="['/order-form']">Send Request To Doctor</button>
+

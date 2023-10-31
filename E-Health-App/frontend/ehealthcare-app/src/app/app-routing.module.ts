@@ -10,6 +10,7 @@ import { UpdatemedicineComponent } from './updatemedicine/updatemedicine.compone
 import { Addtocart } from './addtocart';
 import { AddToCartComponent } from './addtocart/addtocart.component';
 import { ViewcartComponent } from './viewcart/viewcart.component';
+import { OrderformComponent } from './orderform/orderform.component';
 
 
 
@@ -31,7 +32,8 @@ const routes: Routes = [
   ]},
   
   {path:"viewcart",component:ViewcartComponent},
-  {path:"login",component:LoginComponent}
+  {path:"login",component:LoginComponent},
+  {path:"order-form", component:OrderformComponent},
 ];
 
 @NgModule({

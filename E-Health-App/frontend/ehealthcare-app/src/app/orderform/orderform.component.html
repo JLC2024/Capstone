@@ -1,0 +1,45 @@
+<h1>Please Fill Out The Following Information</h1>
+<h3 style="color: white">Your medication request will be reviewed upon submission by the doctor and you will be contacted if more information is required</h3>
+
+ <form (ngSubmit)="submitOrderForm()" >
+    <div>
+        <label for="medicineName">Medication Name:</label>
+        <input type="text" id="medicineName" name="medicineName" [value]="medicineName" class="form-control" readonly>
+      </div>
+      
+  
+    <div class="form-group">
+      <label for="phoneNumber">Phone Number:</label>
+      <input type="text" id="phoneNumber" name="phoneNumber" [(ngModel)]="phoneNumber" class="form-control" required>
+    </div>
+  
+    <div class="form-group">
+      <label for="address">Address:</label>
+      <input type="text" id="address" name="address" [(ngModel)]="address" class="form-control" required>
+    </div>
+  
+    <div class="form-group">
+        <label for="contactMethod">Preferred Contact Method:</label>
+        <select id="contactMethod" name="contactMethod" [(ngModel)]="contactMethod" class="form-control">
+          <option>Phone</option>
+          <option [value]="userEmail">Email</option>
+        </select>
+      </div>
+      
+      <div *ngIf="contactMethod === userEmail" class="form-group">
+        <label for="userEmail">Email:</label>
+        <input type="text" id="userEmail" name="userEmail" [(ngModel)]="userEmail" class="form-control">
+      </div>
+     
+    <div class="form-group">
+      <label for="additionalComments">Additional Comments:</label>
+      <textarea id="additionalComments" name="additionalComments" [(ngModel)]="additionalComments" class="form-control"></textarea>
+    </div>
+
+    <div><p>After the doctor reviews your request, you will be notified of your approval via the contact method you chose. Upon submitting your order, you will be taken to the payment page. You will not be charged until the order is approved and medication has shipped.</p></div>
+  
+    <button type="submit" class="btn btn-primary">Submit Order</button> 
+    <a routerLink="/viewcart" style="color:white">Back to Cart</a>
+  </form> 
+
+  
