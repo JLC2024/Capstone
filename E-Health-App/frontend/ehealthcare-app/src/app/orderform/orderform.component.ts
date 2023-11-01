@@ -91,7 +91,7 @@ export class OrderformComponent  implements OnInit{
         next:(response) => {
         console.log('Form submitted successfully', response);
         window.alert('Form submitted successfully');
-        //this.router.navigate(['/payment']);
+        this.router.navigate(['/payment']);
 
         },
       error: (error: any) => {

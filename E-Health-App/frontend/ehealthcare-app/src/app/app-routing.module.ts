@@ -11,6 +11,7 @@ import { Addtocart } from './addtocart';
 import { AddToCartComponent } from './addtocart/addtocart.component';
 import { ViewcartComponent } from './viewcart/viewcart.component';
 import { OrderformComponent } from './orderform/orderform.component';
+import { PaymentComponent } from './payment/payment.component';
 
 
 
@@ -34,6 +35,7 @@ const routes: Routes = [
   {path:"viewcart",component:ViewcartComponent},
   {path:"login",component:LoginComponent},
   {path:"order-form", component:OrderformComponent},
+  {path:"payment", component:PaymentComponent}
 ];
 
 @NgModule({
