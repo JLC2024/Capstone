@@ -1,0 +1,44 @@
+version: '3.8'
+services:
+  mysql-container:
+    image: mysql:8
+    container_name: mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mydb
+    ports:
+      - 3307:3306
+    restart: always
+    networks:
+      - private
+    volumes:
+      - db:/var/lib/mysql
+  springboot-container:
+    build: ./backend/spring-boot/spring-boot/
+    container_name: springboot-container 
+    depends_on:
+      - mysql-container
+    ports:
+      - 9090:9090
+    restart: always
+    networks:
+      - public
+      - private
+  angular-container:
+    build: ./frontend/angular-product-app/
+    container_name: angular-container
+    ports:
+      - 81:80
+    networks:
+      - public
+    depends_on:
+      - springboot-container
+    restart: always  
+networks:
+  public:
+    name: my-angular-spring-networks
+  private:
+    name: my-spring-db-networks
+volumes:
+  db: 
+   driver: local

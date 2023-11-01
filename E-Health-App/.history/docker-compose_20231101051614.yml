@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  mysql-container:
+    image: mysql:8
+    container_name: mysql-container
+    environment:
+      MYSQL_USER: slpro
+      MYSQL_ROOT_PASSWORD: 6781jjF!
+      MYSQL_PASSWORD: slpass23
+      MYSQL_DATABASE: ehealthcare
+    ports:
+      - 3307:3306
+    restart: always
+  springboot-container:
+    build: ./backend/E-Health-Backend/E-Health-Backend/
+    depends_on:
+      - mysql-container
+    ports:
+      - 9090:9090
+    restart: always
+  angular-container:
+    build: /frontend/ehealthcare-app/
+    ports:
+      - 80:80
+    
