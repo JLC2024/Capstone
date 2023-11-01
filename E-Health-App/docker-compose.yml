@@ -1,21 +1,22 @@
 version: '3.8'
 services:
   mysql-container:
-    image: mysql:8
-    container_name: mysql-container
-    environment:
-      MYSQL_USER: slpro
-      MYSQL_ROOT_PASSWORD: slpass
+    image: mysql
+    container_name: mysql-ha-db
+    environment:      
+      MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: ehealthcare
     ports:
       - 3307:3306
     restart: always
   springboot-container:
+    container_name: ehealth-app
+    image: drugsforall 
     build: 
       context: ./backend/E-Health-Backend (1)/E-Health-Backend
       dockerfile: ./Dockerfile
     depends_on:
-      - mysql-container
+      - mysql-ha-db
     ports:
       - 9090:9090
     restart: always
