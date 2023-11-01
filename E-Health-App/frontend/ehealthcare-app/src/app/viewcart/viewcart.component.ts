@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { ViewcartService } from '../viewcart.service';
 import { CartItem } from '../viewmedicine/cartitem';
 import { UserService } from './userService';
-import { FormsModule } from '@angular/forms';
+
+
 
 
 
@@ -89,17 +90,7 @@ export class ViewcartComponent {
     }
   }
 
-    // updateQuantity(item: CartItem) {
-    //  if (item.quantity > 0) {
-    //   this.viewcartService.updateCartItemQuantity(item.medrequest.mid, item.quantity).subscribe({
-    //    next: (response) => {
-    //       console.log('Item quantity updated:', response);
-    //     },
-    //     error: (error) => {
-    //       console.error('Error updating item quantity:', error);
-    //     }
-    //   });
-    // }
+   
   
    updateQuantity(item: CartItem) {
      if (item.quantity > 0) {

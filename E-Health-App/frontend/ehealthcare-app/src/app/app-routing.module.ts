@@ -12,6 +12,7 @@ import { AddToCartComponent } from './addtocart/addtocart.component';
 import { ViewcartComponent } from './viewcart/viewcart.component';
 import { OrderformComponent } from './orderform/orderform.component';
 import { PaymentComponent } from './payment/payment.component';
+import { ViewordersComponent } from './vieworders/vieworders.component';
 
 
 
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path:"adminhome",component:AdmindashboardComponent,children:[
     {path:"addMedicine",component:AddmedicineComponent},
     {path:"updateMedicine",component:UpdatemedicineComponent},
+    {path:"vieworders",component:ViewordersComponent}
 
 
     
@@ -30,12 +32,16 @@ const routes: Routes = [
     
     
     
+    
+    
   ]},
   
   {path:"viewcart",component:ViewcartComponent},
+  {path:"thankyou", component:OrderformComponent},
   {path:"login",component:LoginComponent},
   {path:"order-form", component:OrderformComponent},
   {path:"payment", component:PaymentComponent}
+  
 ];
 
 @NgModule({

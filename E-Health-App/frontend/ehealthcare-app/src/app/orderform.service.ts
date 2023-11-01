@@ -12,4 +12,8 @@ export class OderformService {
   saveMedicationOrder(medicationOrder: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/submit`, medicationOrder);
   }
+
+  deleteCartItem(emailid: string, mid: number): Observable<void> {
+    return this.http.delete<void>(`http://localhost:9090/cart/${emailid}/${mid}`);
+  }
 }

@@ -17,6 +17,7 @@ import { AddToCartComponent } from './addtocart/addtocart.component';
 import { ViewcartComponent } from './viewcart/viewcart.component';
 import { OrderformComponent } from './orderform/orderform.component';
 import { PaymentComponent } from './payment/payment.component';
+import { ViewordersComponent } from './vieworders/vieworders.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { PaymentComponent } from './payment/payment.component';
     AddToCartComponent,
     ViewcartComponent,
     OrderformComponent,
-    PaymentComponent
+    PaymentComponent,
+    ViewordersComponent
   ],
   imports: [
     BrowserModule,

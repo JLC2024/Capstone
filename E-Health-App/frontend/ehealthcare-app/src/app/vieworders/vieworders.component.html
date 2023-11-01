@@ -1,0 +1,36 @@
+<h1>Current Orders</h1>
+
+<div>
+    <a href="https://www.sandbox.paypal.com/" target="_blank">Open Invoicing Tab</a>
+
+  </div>
+<div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Medicine Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Full Name</th>
+            <th>Phone Number</th>
+            <th>Address</th>
+            <th>Contact Method</th>
+            <th>Additional Comments</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders">
+            <td>{{ order.id }}</td>
+            <td>{{ order.medicineName }}</td>
+            <td>{{ order.price }}</td>
+            <td>{{ order.quantity }}</td>
+            <td>{{ order.fullName}}</td>
+            <td>{{ order.phoneNumber }}</td>
+            <td>{{ order.address }}</td>
+            <td>{{ order.contactMethod }}</td>
+            <td>{{ order.additionalComments }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>

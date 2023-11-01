@@ -1,13 +1,24 @@
 <h1>Please Fill Out The Following Information</h1>
 <h3 style="color: white">Your medication request will be reviewed upon submission by the doctor and you will be contacted if more information is required</h3>
 
- <form (ngSubmit)="submitOrderForm()" >
+ <form (ngSubmit)="submitOrderForm(); deleteItemFromCart()" >
     <div>
         <label for="medicineName">Medication Name:</label>
         <input type="text" id="medicineName" name="medicineName" [value]="medicineName" class="form-control" readonly>
       </div>
+      <div class="form-group">
+        <label for="quantity">Quantity:</label>
+        <input type="text" id="quantity" name="quantity" [value]="quantity" class="form-control" readonly>
+      </div>
       
-  
+      <div class="form-group">
+        <label for="price">Price:</label>
+        <input type="text" id="price" name="price" [value]="'USD $' + price +' each'" class="form-control" readonly>
+      </div>
+      <div class="form-group">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" [(ngModel)]="fullName" class="form-control" required>
+      </div>
     <div class="form-group">
       <label for="phoneNumber">Phone Number:</label>
       <input type="text" id="phoneNumber" name="phoneNumber" [(ngModel)]="phoneNumber" class="form-control" required>
@@ -36,7 +47,6 @@
       <textarea id="additionalComments" name="additionalComments" [(ngModel)]="additionalComments" class="form-control"></textarea>
     </div>
 
-    <div><p>After the doctor reviews your request, you will be notified of your approval via the contact method you chose. Upon submitting your order, you will be taken to the payment page. You will not be charged until the order is approved and medication has shipped.</p></div>
   
     <button type="submit" class="btn btn-primary">Submit Order</button> 
     <a routerLink="/viewcart" style="color:white">Back to Cart</a>

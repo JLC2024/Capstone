@@ -14,6 +14,9 @@ public class MedicationOrder {
     private Long id;
     
     private String medicineName;
+    private String price;
+    private Integer quantity;
+    private String fullName;
     private String phoneNumber;
     private String address;
     private String contactMethod;
@@ -27,11 +30,14 @@ public class MedicationOrder {
     public MedicationOrder() {
     	
     }
-	public MedicationOrder(Long id, String medicineName, String phoneNumber, String address, String contactMethod, String additionalComments,
+	public MedicationOrder(Long id, String medicineName, String price, Integer quantity, String fullName, String phoneNumber, String address, String contactMethod, String additionalComments,
 			Login user, boolean approved) {
 		super();
 		this.id = id;
 		this.medicineName = medicineName;
+		this.price = price;
+		this.quantity = quantity;
+		this.fullName=fullName;
 		this.phoneNumber = phoneNumber;
 		this.address = address;
 		this.contactMethod = contactMethod;
@@ -100,12 +106,33 @@ public class MedicationOrder {
 	public void setAdditionalComments(String additionalComments) {
 		this.additionalComments = additionalComments;
 	}
+	public String getPrice() {
+		return price;
+	}
+	public void setPrice(String price) {
+		this.price = price;
+	}
+	public Integer getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
+	public String getFullName() {
+		return fullName;
+	}
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
 	@Override
 	public String toString() {
-		return "MedicationOrder [id=" + id + ", medicineName=" + medicineName + ", phoneNumber=" + phoneNumber
-				+ ", address=" + address + ", contactMethod=" + contactMethod + ", additionalComments="
-				+ additionalComments + ", approved=" + approved + ", user=" + user + "]";
+		return "MedicationOrder [id=" + id + ", medicineName=" + medicineName + ", price=" + price + ", quantity="
+				+ quantity + ", fullName=" + fullName + ", phoneNumber=" + phoneNumber + ", address=" + address
+				+ ", contactMethod=" + contactMethod + ", additionalComments=" + additionalComments + ", approved="
+				+ approved + ", user=" + user + "]";
 	}
+	
+	
 	
 	
 	

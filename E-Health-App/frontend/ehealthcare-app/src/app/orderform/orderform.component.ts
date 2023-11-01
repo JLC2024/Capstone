@@ -7,14 +7,14 @@ import { FormGroup,FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
 
-
-
 @Component({
   selector: 'app-orderform',
   templateUrl: './orderform.component.html',
   styleUrls: ['./orderform.component.css']
 })
 export class OrderformComponent  implements OnInit{
+  cartItems: CartItem[] = [];
+  
 
 
     medicineName: string = '';
@@ -23,16 +23,23 @@ export class OrderformComponent  implements OnInit{
     contactMethod: string = '';
     additionalComments: string = '';
     userEmail: string = '';
+    price: number=0;
+    quantity: number =0;
+    fullName: string ='';
   
-    constructor(private route: ActivatedRoute, private orderformService: OderformService, private viewcartService: ViewcartService, public router: Router ) {
+    constructor(private route: ActivatedRoute, private orderformService: OderformService, private viewcartService: ViewcartService, public router: Router) {
     this.route.queryParams.subscribe((params) => {
       this.medicineName = params['medicineName'];
+      
     });
 
   }
 
   orderRef = new FormGroup({
       medicineName:new FormControl(),
+      quantity: new FormControl(),
+      price: new FormControl(),
+      fullName: new FormControl(),
       phoneNumber:new FormControl(),
       address:new FormControl(),
       contactMethod:new FormControl(),
@@ -45,6 +52,8 @@ export class OrderformComponent  implements OnInit{
   ngOnInit() {
     this.initializeFormFields();
     console.log('Medicine Name: ', this.medicineName);
+    console.log('medicine price:', this.price);
+    console.log('Medicine quantity:', this.quantity);
   }
   
   initializeFormFields() {
@@ -66,6 +75,9 @@ export class OrderformComponent  implements OnInit{
 
         if (cartItems.length > 0) {
           this.medicineName = cartItems[0].medrequest.mname;
+          this.quantity = cartItems[0].quantity;
+          this.price = cartItems[0].medrequest.price;
+         
       }else {
         console.error('Cart is empty'); 
       }
@@ -81,6 +93,9 @@ export class OrderformComponent  implements OnInit{
    
       const formData = {
         medicineName: this.medicineName,
+        quantity: this.quantity,
+        price: this.price,
+        fullName: this.fullName,
         phoneNumber: this.phoneNumber,
         address: this.address,
         contactMethod: this.contactMethod,
@@ -91,8 +106,9 @@ export class OrderformComponent  implements OnInit{
         next:(response) => {
         console.log('Form submitted successfully', response);
         window.alert('Form submitted successfully');
-        this.router.navigate(['/payment']);
-
+        
+      this.router.navigate(['/payment']);
+       
         },
       error: (error: any) => {
         console.error('Error submitting form:', error);
@@ -100,5 +116,21 @@ export class OrderformComponent  implements OnInit{
       }
     });
     
+  }
+  deleteItemFromCart() {
+    // Remove all items from the cart one by one
+    for (const item of this.cartItems) {
+      this.viewcartService.deleteCartItem(item.emailid, item.medrequest.mid).subscribe({
+        next: () => {
+          const index = this.cartItems.indexOf(item);
+          if (index > -1) {
+            this.cartItems.splice(index, 1);
+          }
+        },
+        error: (error) => {
+          console.error('Error deleting cart item:', error);
+        }
+      });
+    }
   }
 }

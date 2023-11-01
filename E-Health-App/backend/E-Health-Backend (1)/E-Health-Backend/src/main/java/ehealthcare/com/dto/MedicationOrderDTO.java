@@ -2,6 +2,9 @@ package ehealthcare.com.dto;
 
 public class MedicationOrderDTO {
 	private String medicineName;
+	private String price;
+	private Integer quantity;
+	private String fullName;
     private String phoneNumber;
     private String address;
     private String contactMethod;
@@ -12,10 +15,13 @@ public class MedicationOrderDTO {
 	  }
 
 	
-	public MedicationOrderDTO(String medicineName, String phoneNumber, String address, String contactMethod,
+	public MedicationOrderDTO(String medicineName, String price, Integer quantity, String fullName, String phoneNumber, String address, String contactMethod,
 			String additionalComments) {
 		super();
 		this.medicineName = medicineName;
+		this.price=price;
+		this.quantity=quantity;
+		this.fullName=fullName;
 		this.phoneNumber = phoneNumber;
 		this.address = address;
 		this.contactMethod = contactMethod;
@@ -67,12 +73,50 @@ public class MedicationOrderDTO {
 		this.additionalComments = additionalComments;
 	}
 
+	
+
+	public String getFullName() {
+		return fullName;
+	}
+
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
+
+	public String getPrice() {
+		return price;
+	}
+
+
+	public void setPrice(String price) {
+		this.price = price;
+	}
+
+
+	public Integer getQuantity() {
+		return quantity;
+	}
+
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
+
 
 	@Override
 	public String toString() {
-		return "MedicationOrderDTO [medicineName=" + medicineName + ", phoneNumber=" + phoneNumber + ", address=" + address + ", contactMethod="
-				+ contactMethod + ", additionalComments=" + additionalComments + "]";
+		return "MedicationOrderDTO [medicineName=" + medicineName + ", price=" + price + ", quantity=" + quantity
+				+ ", fullName=" + fullName + ", phoneNumber=" + phoneNumber + ", address=" + address
+				+ ", contactMethod=" + contactMethod + ", additionalComments=" + additionalComments + "]";
 	}
+
+
+	
+
+
+	
 
 	
 	  

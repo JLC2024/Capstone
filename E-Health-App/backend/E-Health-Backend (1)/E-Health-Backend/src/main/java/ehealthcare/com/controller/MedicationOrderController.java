@@ -68,6 +68,9 @@ public class MedicationOrderController {
     private MedicationOrder mapToMedicationOrder(MedicationOrderDTO medicationOrderDTO) {
         MedicationOrder medicationOrder = new MedicationOrder();
         medicationOrder.setMedicineName(medicationOrderDTO.getMedicineName());
+        medicationOrder.setPrice(medicationOrderDTO.getPrice());
+        medicationOrder.setQuantity(medicationOrderDTO.getQuantity());
+        medicationOrder.setFullName(medicationOrderDTO.getFullName());
         medicationOrder.setPhoneNumber(medicationOrderDTO.getPhoneNumber());
         medicationOrder.setAddress(medicationOrderDTO.getAddress());
         medicationOrder.setContactMethod(medicationOrderDTO.getContactMethod());
