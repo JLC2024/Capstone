@@ -22,7 +22,7 @@ export class UpdatemedicineComponent implements OnInit{
 
   constructor(public medicineService: MedicineService) {
     this.updateMedicineRef = new FormGroup({
-      mname: new FormControl('', Validators.required), // Add validators as needed
+      mname: new FormControl('', Validators.required),
       price: new FormControl('', Validators.required),
       qty: new FormControl('', Validators.required),
       imageurl: new FormControl('', Validators.required), 
@@ -61,8 +61,7 @@ export class UpdatemedicineComponent implements OnInit{
     
     updateMedicine() {
       if (!this.selectedMedicine) {
-        // Handle the case where selectedMedicine is not defined
-        // For example, show an error message or return early
+      
         console.error('selectedMedicine is undefined');
         return;
       }
@@ -78,14 +77,14 @@ export class UpdatemedicineComponent implements OnInit{
     
       this.medicineService.updateMedicine(this.selectedMedicine.mid,updatedMedicine).subscribe(
         (response: Medicine) => {
-          // Handle the response
+        
           console.log('Medicine updated successfully:', response);
-          // Optionally reset the form or close the update form
+         
           this.showUpdateForm = false;
           this.updateMedicineRef.reset();
         },
         (error) => {
-          // Handle errors, e.g., display an error message
+     
           console.log('Error updating medicine:', error);
         }
       );
