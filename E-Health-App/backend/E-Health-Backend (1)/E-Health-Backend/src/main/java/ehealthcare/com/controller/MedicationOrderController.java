@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -79,5 +80,22 @@ public class MedicationOrderController {
 
         return medicationOrder;
     }
+    
+    @DeleteMapping("/delete/{orderId}")
+    public ResponseEntity<String> deleteOrder(@PathVariable Long orderId) {
+        try {
+            // Check if the order exists
+            if (orderRepository.existsById(orderId)) {
+                orderRepository.deleteById(orderId);
+                return ResponseEntity.ok().build();
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body("Error deleting medication order: " + e.getMessage());
+        }
+    }
+
 
 }

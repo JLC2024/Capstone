@@ -19,6 +19,18 @@ export class ViewordersComponent implements OnInit {
       this.orders = orders;
     });
   }
+  deleteOrder(orderId: number) {
+    if (confirm('Are you sure you want to delete this order?')) {
+      this.viewordersService.deleteMedicationOrder(orderId).subscribe(() => {
+        // Handle success, e.g., refresh the order list
+        this.loadOrders();
+      });
+    }
+  }
+  loadOrders() {
+    this.viewordersService.getMedicationOrders().subscribe((orders) => {
+      this.orders = orders;
+    })
   }
 
-
+}

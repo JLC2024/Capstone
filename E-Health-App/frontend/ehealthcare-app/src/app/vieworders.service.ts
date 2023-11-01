@@ -16,4 +16,8 @@ export class ViewordersService {
   getMedicationOrders(): Observable<MedicationOrder[]> {
     return this.http.get<MedicationOrder[]>(`${this.baseUrl}/list`);
   }
+
+  deleteMedicationOrder(orderId: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/delete/${orderId}`);
+  }
 }

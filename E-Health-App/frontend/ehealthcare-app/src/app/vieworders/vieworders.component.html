@@ -30,6 +30,7 @@
             <td>{{ order.address }}</td>
             <td>{{ order.contactMethod }}</td>
             <td>{{ order.additionalComments }}</td>
+            <button (click)="deleteOrder(order.id)">Delete</button>
           </tr>
         </tbody>
       </table>
