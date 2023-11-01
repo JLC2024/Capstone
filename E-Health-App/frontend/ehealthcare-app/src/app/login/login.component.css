@@ -1,0 +1,46 @@
+
+.centered-container {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.centered-container label{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.large-input {
+    width: 100%; 
+}
+
+
+.white-link {
+    color: white;
+    text-decoration: none;
+}
+
+.white-link:hover {
+    text-decoration: underline;
+}
+.logo {
+    width: 75px;
+   justify-content: center;
+  }
+
+.pagetitle {
+    color: white; 
+    text-decoration: underline; 
+    text-align: center; 
+  }
+  .center-button {
+    
+    margin-right: 52pc;
+}
+
+.rlink{
+    font-size: 30px;
+    color: white;
+    text-align: left;
+}

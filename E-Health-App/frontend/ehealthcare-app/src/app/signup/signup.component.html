@@ -1,7 +1,10 @@
-
-<h2>Please Sign Up</h2>
+<img src="assets\logo.png" alt="Logo" class="logo">
+<br>
+<h2 class="pagetitle">Please Sign Up</h2>
+<br>
 <form [formGroup]="loginRef" (ngSubmit)="signUp()">
-<div class="container">
+    <br>
+<div class="centered-container">
 
     <div class="row">
         <div class="col-2">
@@ -11,6 +14,7 @@
             <input type="email" class="form-control" formControlName="emailid"/>
         </div>
     </div>
+    <br>
     <div class="row">
         <div class="col-2">
             <label>Password</label>
@@ -19,6 +23,7 @@
             <input type="password" class="form-control" formControlName="password"/>
         </div>
     </div>
+    <br>
     <div class="row">
         <div class="col-2">
             <label>Type of User</label>
@@ -30,15 +35,17 @@
         </div>
         <div class="row">
             <div class="col-2">
-                <input type="submit" value="Sign Up" class="btn btn-success"/>
+                
+                
             </div>
             <br>
             <div class="col-2">
-                <input type="reset" value="reset" class="btn btn-info"/>
+                <input type="submit" value="Sign Up" class="btn btn-success center-button"/> 
+                <input type="reset" value="reset" class="btn btn-info center-button"/>
             </div>
         </div>
         
-    <a routerLink="/login" style="color:white">Login</a>
+    <a routerLink="/login" class="rlink">Login</a>
     </div>
     <span style="color:red">{{msg}}</span>
 </form>

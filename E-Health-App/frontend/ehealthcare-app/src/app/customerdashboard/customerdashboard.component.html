@@ -1,10 +1,13 @@
 <div>
-    <h2>Welcome to Your Customer Homepage {{emailid}}</h2>
-
+    <img src="assets\logo.png" alt="Logo" class="logo">
+    <br>
+    <h2 class="pagetitle">Welcome to Your Customer Homepage {{emailid}}</h2>
+    <br>
+<br>
     <input type="button" value="logout"
-    (click)="logout()" class="btn btn-info"/><br>
+    (click)="logout()" class="btn btn-info" logout-button/><br>
 
-    <a routerLink="viewMedicine">View Medications</a><br>
+    <a routerLink="viewMedicine" class="nav-link">View Medications</a><br>
    
     <hr/>
     <router-outlet></router-outlet>

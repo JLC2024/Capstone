@@ -1,0 +1,29 @@
+
+.pagetitle {
+    color: white; 
+    text-decoration: underline; 
+    text-align: center; 
+  }
+
+.notice {
+    background-color: rgba(255, 255, 255, 0.3); 
+    border: 2px solid black; 
+    padding: 20px;
+    text-align: center;
+    margin: 0 auto; 
+    width: 80%; 
+    max-width: 600px;
+    margin-top: 20px; 
+    font-size: 18px;
+  }
+  
+ 
+  .white-link {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .white-link:hover {
+    text-decoration: underline;
+  }
+  

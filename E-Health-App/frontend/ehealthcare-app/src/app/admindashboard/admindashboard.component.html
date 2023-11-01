@@ -1,14 +1,18 @@
 <div>
-    <h2>Welcome to Your Admin Homepage</h2>
+    <img src="assets\logo.png" alt="Logo" class="logo">
+    <h2 class="pagetitle">Welcome to Your Admin Homepage</h2>
+    <br>
     
     <input type="button" value="logout"
-    (click)="logout()" class="btn btn-info"/>
+    (click)="logout()" class="btn btn-info logout-button"/>
+    <br>
 <br>
-    <a routerLink="addMedicine" style="color:white">Add Medications</a><br>
-    <a routerLink="updateMedicine" style="color:white">Edit Medication</a><br>
-    <a routerLink="vieworders" style="color:white">View Existing Orders</a>
-    
-    <hr/>
+<div class="link-container">
+    <a routerLink="addMedicine" class="nav-link">Add Medications</a><br>
+    <a routerLink="updateMedicine" class="nav-link">Edit Medication</a><br>
+    <a routerLink="vieworders" class="nav-link">View Existing Orders</a>
+</div>
+    <hr>
     <router-outlet></router-outlet>
 
 </div>

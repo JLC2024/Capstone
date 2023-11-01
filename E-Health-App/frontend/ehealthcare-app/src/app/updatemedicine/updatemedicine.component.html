@@ -5,35 +5,52 @@
    </Form>
 
     <h2>Medication Details</h2> 
+    <br>
+    
 <div *ngIf="!showUpdateForm">
+  <div class="medication-grid">
     <span *ngFor="let mm of medicine">
+      <div class="medication-card">
+        <div class="medication-info">
       <img src={{mm.imageurl}} width="200px" height="200px" />
       <div>
         Name: {{mm.mname}}<br> Price: {{"$" + mm.price}} <br> Bottle Quantity: {{mm.qty}} <br> Description: {{mm.description}} <br>
         <button (click)="showUpdateFormForMedicine(mm)" class = "btn btn-info">Update</button><br>
         <button (click)="deleteMedicine(mm.mid)" class="btn btn-danger">Delete</button>
       </div>
+      </div>
+      </div>
     </span>
+  </div>
   </div>
   
   <!-- Update Form -->
   <div *ngIf="showUpdateForm">
-    <h2>Update Medication</h2>
-    <form [formGroup]="updateMedicineRef" *ngIf="selectedMedicine" (ngSubmit)="updateMedicine()">
-      <label>Name</label>
-      <input type="text" id="mname" name="mname" formControlName="mname">
-      <label>Price</label>
-      <input type="number" id="price" name="price" formControlName="price">
-      <label>Bottle Quantity</label>
-      <input type="number" id="qty" name="qty" formControlName="qty">
-      <label>Image</label>
-      <input type="url" id="imageurl" name="imageurl" formControlName="imageurl">
-      <label>Description</label>
-      <input type="text" id="description" name="description" formControlName="description">
+    <h2 class="pagetitle">Update Medication</h2>
+    <form [formGroup]="updateMedicineRef" *ngIf="selectedMedicine" (ngSubmit)="updateMedicine()" class="form-container">
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" id="mname" name="mname" formControlName="mname">
+      </div>
+      <div class="form-group">
+        <label>Price</label>
+        <input type="number" id="price" name="price" formControlName="price">
+      </div>
+      <div class="form-group">
+        <label>Bottle Quantity</label>
+        <input type="number" id="qty" name="qty" formControlName="qty">
+      </div>
+      <div class="form-group">
+        <label>Image</label>
+        <input type="url" id="imageurl" name="imageurl" formControlName="imageurl">
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <input type="text" id="description" name="description" formControlName="description">
+      </div>
       <button type="submit">Update</button>
     </form>
     <span *ngIf="showUpdateForm">
       <a (click)="showUpdateForm = false">Cancel</a>
     </span>
   </div>
-  

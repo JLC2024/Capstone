@@ -1,6 +1,7 @@
 <div>
-    <h2>Add Medication</h2>
-    <form [formGroup]="medicineRef" (ngSubmit)="storeMedicine()">
+    <h2 class="pagetitle">Add Medication</h2>
+    <br>
+    <form [formGroup]="medicineRef" (ngSubmit)="storeMedicine()" class="form-container">
         <label>Medicine Name</label>
         <input type="text" formControlName="mname"/><br/>
         <label>Price</label>
@@ -21,11 +22,16 @@
     <label for="searchKey">Search for Medications</label>
     <input #searchkeyword (keyup)="searchByKeyword(searchkeyword.value)" name="searchKey" id="searchKey" placeholder="name or description" class="w-50"/>
    </Form>
-
+<br>
  <h2>Medication Details</h2>
-<div>
+ <br>
+<div class="medication-grid">
     <span *ngFor="let mm of medicine" >
+        <div class="medication-card">
         <img src={{mm.imageurl}} width="200px" height="200px"/>
+            <div class="medication-info">
         <div>Name :{{mm.mname}}<br> Price :{{"$"+mm.price}} <br> Bottle Quantity :{{mm.qty}} <br> Description :{{mm.description}}<br></div>
+            </div>
+        </div>
     </span>
 </div>

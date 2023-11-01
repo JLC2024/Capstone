@@ -1,9 +1,10 @@
 <h1>Please Fill Out The Following Information</h1>
+<br>
 <h3 style="color: white">Your medication request will be reviewed upon submission by the doctor and you will be contacted if more information is required</h3>
-
+<br>
  <form (ngSubmit)="submitOrderForm(); deleteItemFromCart()" >
     <div>
-        <label for="medicineName">Medication Name:</label>
+        <label class="medname" for="medicineName">Medication Name:</label>
         <input type="text" id="medicineName" name="medicineName" [value]="medicineName" class="form-control" readonly>
       </div>
       <div class="form-group">
@@ -49,7 +50,9 @@
 
   
     <button type="submit" class="btn btn-primary">Submit Order</button> 
+    <br>
     <a routerLink="/viewcart" style="color:white">Back to Cart</a>
+    <br>
   </form> 
 
   

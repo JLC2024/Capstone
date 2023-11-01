@@ -1,7 +1,9 @@
 
-<h2>Login Page</h2>
+<img src="assets\logo.png" alt="Logo" class="logo">
+<h2 class="pagetitle">Login Page</h2>
 <form [formGroup]="loginRef" (ngSubmit)="signIn()">
-<div class="container">
+    <br>
+<div class="centered-container">
 
     <div class="row">
         <div class="col-2">
@@ -11,6 +13,7 @@
             <input type="email" class="form-control" formControlName="emailid"/>
         </div>
     </div>
+    <br>
     <div class="row">
         <div class="col-2">
             <label>Password</label>
@@ -19,6 +22,7 @@
             <input type="password" class="form-control" formControlName="password"/>
         </div>
     </div>
+    <br>
     <div class="row">
         <div class="col-2">
             <label>Type of User</label>
@@ -28,15 +32,18 @@
             <input type="radio" name="typeofuser" value="customer" formControlName="typeofuser"/>Customer
         </div>
         </div>
-        <div class="row">
-            <div class="col-2">
-                <input type="submit" value="Sign In" class="btn btn-success"/>
-            </div>
-            <br>
+        <br>
+        <div>
+            <input type="submit" value="Sign In" class="btn btn-success center-button" />
             
         </div>
-        
-    <a routerLink="/SignUp" style="color:white">Sign Up</a>
+        <br>
+        <div>  
+        </div>
+     
+        <a routerLink="/SignUp" class="rlink">Sign Up</a>
+    
     </div>
+   
     <span style="color:red">{{msg}}</span>
 </form>

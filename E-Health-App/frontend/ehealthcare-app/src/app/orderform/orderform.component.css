@@ -1,0 +1,46 @@
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+   .medname {
+    font-size: 1.2rem;
+    font-weight: bold;
+   }
+
+  .form-group label {
+    font-size: 1.2rem; 
+    font-weight: bold;
+  }
+  
+  .form-control {
+    width: 100%; 
+    padding: 10px;
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    font-size: 1rem; 
+  }
+  
+ 
+  form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px; 
+    margin: 0 auto; 
+  }
+  
+  .btn {
+    width: auto; 
+    padding: 10px 20px;
+    font-size: 1rem; 
+  }
+  
+  
+  a[routerLink] {
+    text-decoration: none; 
+  }
+  a[routerLink]:hover {
+    text-decoration: underline;
+  }
+  
