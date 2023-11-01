@@ -18,7 +18,7 @@ services:
       - 9090:9090
     restart: always
   angular-container:
-    build: ./frontend/ehealthcare-app
+    build: ./frontend/ehealthcare-app/
     ports:
       - 80:80
     
