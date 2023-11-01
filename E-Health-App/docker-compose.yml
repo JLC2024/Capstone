@@ -11,14 +11,18 @@ services:
       - 3307:3306
     restart: always
   springboot-container:
-    build: /backend/E-Health-Backend (1)/E-Health-Backend/
+    build: 
+      context: ./backend/E-Health-Backend (1)/E-Health-Backend
+      dockerfile: ./Dockerfile
     depends_on:
       - mysql-container
     ports:
       - 9090:9090
     restart: always
   angular-container:
-    build: /frontend/ehealthcare-app/
+    build: 
+      context: ./frontend/ehealthcare-app
+      dockerfile: ./Dockerfile
     ports:
       - 80:80
     
