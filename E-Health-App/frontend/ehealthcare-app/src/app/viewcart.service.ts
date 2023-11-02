@@ -12,7 +12,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ViewcartService {
-  baseUrl:string="http://13.52.231.145/cart";
+  baseUrl:string="http://13.52.231.145:9090/cart";
 
   constructor(private http: HttpClient) { }
  
