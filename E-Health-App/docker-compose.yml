@@ -6,7 +6,7 @@ services:
       context: ./frontend/ehealthcare-app
       dockerfile: ./Dockerfile
     ports:
-      - 81:80
+      - 80:80
     environment:
       MYSQL_HOST: mysql-container
       MYSQL_USER: root
