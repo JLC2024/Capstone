@@ -10,7 +10,7 @@ export class LoginService {
 
   constructor(public http:HttpClient) { }
 
-  baseUrl:string="http://localhost:9090/login"
+  baseUrl:string="http://13.52.231.145/login"
 
   signIn(login:any):Observable<string> {
     return this.http.post(this.baseUrl+"/signIn",login,{responseType:'text'});
