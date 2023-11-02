@@ -8,7 +8,7 @@ import { Medicine } from './medicine';
   providedIn: 'root'
 })
 export class MedicineService {
-  baseUrl:string = "http://13.52.231.145/medicine"
+  baseUrl:string = "http://13.52.231.145:9090/medicine"
 
   constructor(public http:HttpClient) { }
 
