@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class OderformService {
-  baseUrl:string="http://localhost:9090/orders";
+  baseUrl:string="http://13.52.231.145/orders";
   constructor(private http: HttpClient) { }
 
   saveMedicationOrder(medicationOrder: any): Observable<any> {
@@ -14,6 +14,6 @@ export class OderformService {
   }
 
   deleteCartItem(emailid: string, mid: number): Observable<void> {
-    return this.http.delete<void>(`http://localhost:9090/cart/${emailid}/${mid}`);
+    return this.http.delete<void>(`http://13.52.231.145/cart/${emailid}/${mid}`);
   }
 }
