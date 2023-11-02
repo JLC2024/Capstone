@@ -9,7 +9,7 @@ import { CartItem } from './viewmedicine/cartitem';
 
 export class AddtocartService {
 
-  baseUrl:string="http://localhost:9090/cart";
+  baseUrl:string="http://13.52.231.145/cart";
 
   constructor(private http: HttpClient) { }
 
