@@ -9,7 +9,7 @@ import { MedicationOrder } from './medicationOrder';
   providedIn: 'root'
 })
 export class ViewordersService {
-  baseUrl:string="http://localhost:9090/orders";
+  baseUrl:string="http://13.52.231.145/orders";
 
   constructor(private http: HttpClient) { }
 
