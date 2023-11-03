@@ -23,21 +23,22 @@ pipeline {
         }
         stage ('Test') {
             steps {
-                
+                dir('/var/lib/jenkins/workspace/ehealth-app/E-Health-App/backend/E-Health-Backend (1)/E-Health-Backend') {
                 sh "mvn test"
                 
                 echo "Testing the project with maven test"
-            }
+		}
+		}
         }
         stage ('Deloy'){
             steps{
-                
+                dir('/var/lib/jenkins/workspace/ehealth-app/E-Health-App/backend/E-Health-Backend (1)/E-Health-Backend') {
                 sh "mvn package"
                 
                 echo "Deloying project with maven package"
             }
         }
-        
+	}
        
         
         stage ('Docker Login'){
