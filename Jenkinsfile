@@ -42,9 +42,12 @@ pipeline {
        
         
         stage ('Docker Login'){
+	    environment {
+		    DOCKER_USERNAME = 'jencren81'
+		    DOCKER_PASSWORD = 'ThisIsMakingMyHeadHurt23!'
             steps{
-               withCredentials([string(credentialsId: 'DockerId', variable: 'DPWD')]) {
-                sh "docker login -u jencren81 -p ${DPWD}"
+              
+                sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
                 }
             }
         }
