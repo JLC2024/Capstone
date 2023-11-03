@@ -41,16 +41,17 @@ pipeline {
 	}
        
         
-        stage ('Docker Login'){
-	    environment {
-		    DOCKER_USERNAME = 'jencren81'
-		    DOCKER_PASSWORD = 'ThisIsMakingMyHeadHurt23!'
-            steps{
-              
-                sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
-                }
-            }
+     stage('Docker Login') {
+    steps {
+        script {
+            def DOCKER_USERNAME = 'jencren81'
+            def DOCKER_PASSWORD = 'yourpassword'
+            
+            sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
         }
+    }
+}
+
         
        
 
