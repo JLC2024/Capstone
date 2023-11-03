@@ -12,13 +12,13 @@ pipeline {
         stage('Build') {
             steps {
              
-              
+              	dir('/var/lib/jenkins/workspace/ehealth-app/E-Health-App/backend/E-Health-Backend (1)/E-Health-Backend') {
 
                 sh "mvn compile"
                 
                 echo 'Building project with maven compile'
 
-               
+		}
             }
         }
         stage ('Test') {
