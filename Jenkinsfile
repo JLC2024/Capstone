@@ -55,9 +55,10 @@ pipeline {
         
 	stage ('Dock Deploy') {
     steps {
-        sh "docker-compose up --build -d --project-name ehealth-app-${BUILD_NUMBER}"
+        sh "docker-compose up --build -d"
     }
 }
+
 
 	
 	stage ('Archiving'){
