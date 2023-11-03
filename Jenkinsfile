@@ -55,9 +55,12 @@ pipeline {
         
 	stage ('Dock Deploy') {
     steps {
-        sh "docker-compose up --build -d"
+        dir('/var/lib/jenkins/workspace/ehealth-app/E-Health-App/') {
+            sh "docker-compose up --build -d"
+        }
     }
 }
+
 
 
 	
