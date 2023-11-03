@@ -45,7 +45,7 @@ pipeline {
     steps {
         script {
             def DOCKER_USERNAME = 'jencren81'
-            def DOCKER_PASSWORD = 'yourpassword'
+            def DOCKER_PASSWORD = 'ThisIsMakingMyHeadHurt23!'
             
             sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
         }
