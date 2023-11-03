@@ -28,7 +28,7 @@ services:
     build: ./frontend/ehealthcare-app
     container_name: angular-container
     ports:
-      - 81:80
+      - 80:80
     networks:
       - public
     depends_on:
