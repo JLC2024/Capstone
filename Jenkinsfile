@@ -67,7 +67,7 @@ pipeline {
 	stage ('Archiving'){
             steps{
                 
-                archiveArtifcacts "**/target/*.jar"
+                archiveArtifacts "**/target/*.jar"
 
             }
         }
