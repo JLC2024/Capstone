@@ -14,7 +14,7 @@ pipeline {
              
               
 
-                sh "maven compile"
+                sh "mvn compile"
                 
                 echo 'Building project with maven compile'
 
