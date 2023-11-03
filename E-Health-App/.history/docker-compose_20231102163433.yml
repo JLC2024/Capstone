@@ -1,0 +1,45 @@
+version: '3.8'
+services:
+  angular-container:
+    container_name: angular-container
+    build: 
+      context: ./frontend/ehealthcare-app
+      dockerfile: ./Dockerfile
+    ports:
+      - 80:80
+    environment:
+      MYSQL_HOST: mysql-container
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_PORT: 3306
+    restart: always
+
+  springboot-container:
+    container_name: springbboot-container
+    image: drugsforall 
+    build: 
+      context: ./backend/E-Health-Backend (1)/E-Health-Backend
+      dockerfile: ./Dockerfile
+      depends_on:
+      - mysql-container
+    # environment:
+    #   MYSQL_HOST: mysql-container
+    #   MYSQL_USER: root
+    #   MYSQL_PASSWORD: root
+    #   MYSQL_PORT: 3306
+    ports:
+      - 9090:9090
+    restart: always
+
+  mysql-container:
+    image: mysql:latest
+    container_name: mysql-container
+    environment:      
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ehealthcare
+    ports:
+      - 3306:3306
+    restart: always
+    volumes:
+      - ./data:/var/lib/mysql
+    
