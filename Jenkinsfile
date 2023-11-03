@@ -14,7 +14,7 @@ pipeline {
              
               
 
-                sh "maven compile"
+                sh "mvn compile"
                 
                 echo 'Building project with maven compile'
 
@@ -24,7 +24,7 @@ pipeline {
         stage ('Test') {
             steps {
                 
-                sh "maven test"
+                sh "mvn test"
                 
                 echo "Testing the project with maven test"
             }
@@ -32,7 +32,7 @@ pipeline {
         stage ('Deloy'){
             steps{
                 
-                sh "maven package"
+                sh "mvn package"
                 
                 echo "Deloying project with maven package"
             }
